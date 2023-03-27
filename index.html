@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <div style="text-align: center; margin: 2%; border: 3px solid red; background-color:mistyrose">
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h1>{% block title %} Shorten Your URL Here {% endblock %}</h1>
+    <form method="post">
+    <div class="form-group">
+        <label for="url">Enter URL : </label>
+        <input type="text" name="url"
+               placeholder="URL to shorten" class="form-control"
+               value="{{ request.form['url'] }}" autofocus></input>
+    </div>
+    <br>
+    <div class="form-group">
+        <button style="margin-bottom: 5px;" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+
+    {% if short_url %}
+    <hr>
+    <form method="get", >
+    <label for="your_url">Your Short URL</label>
+    <label style="color:blueviolet ;">{{ short_url }}</label></label>
+    </form>
+    {% endif %}
+    {% endblock %}
+    </div>
+</body>
+</html>
